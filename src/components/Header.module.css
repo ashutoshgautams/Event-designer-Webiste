@@ -1,0 +1,473 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 0;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.headerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Backdrop styles */
+.backdrop {
+  position: absolute;
+  top: -1rem;
+  left: -2rem;
+  right: -2rem;
+  height: calc(100% + 2rem);
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0);
+}
+
+.scrolled .backdrop {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(223, 165, 164, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Logo */
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.logo {
+  font-family: var(--font-cormorant);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--color-dark);
+  transition: all 0.3s ease;
+  position: relative;
+  letter-spacing: 0.05em;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.logo:hover::after {
+  width: 100%;
+}
+
+.logoAccent {
+  position: relative;
+  display: inline-block;
+  color: var(--color-primary);
+}
+
+.logoAccent::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  top: 0;
+  right: -8px;
+  opacity: 0.7;
+}
+
+.logoShape {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  left: -40px;
+  top: -50px;
+  background-color: var(--color-primary-light);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  opacity: 0.1;
+  z-index: -1;
+  filter: blur(10px);
+  animation: rotateSlow 20s linear infinite;
+}
+
+@keyframes rotateSlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.menu {
+  display: flex;
+  list-style-type: none;
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menuItem {
+  position: relative;
+}
+
+.menuLink {
+  color: var(--color-dark);
+  opacity: 0.8;
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+}
+
+.menuLink:hover {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+.menuLink::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.menuLink:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.menuLink.active {
+  color: var(--color-primary);
+}
+
+.menuLink.active::before {
+  transform: scaleX(1);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 3rem;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(223, 165, 164, 0.1);
+  color: var(--color-dark);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.actionButton:hover {
+  background-color: var(--color-primary);
+  color: white;
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
+.actionIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.contactButton {
+  padding: 0.7rem 1.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.contactButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.contactButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(223, 165, 164, 0.3);
+}
+
+.contactButton:hover::before {
+  transform: translateX(0);
+}
+
+.contactIcon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.contactButton:hover .contactIcon {
+  transform: translateX(3px);
+}
+
+/* Mobile Menu Toggle */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-dark);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  z-index: 1001;
+}
+
+.menuIcon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.menuIconBar {
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menuIconBar:nth-child(1) {
+  top: 7px;
+}
+
+.menuIconBar:nth-child(2) {
+  top: 15px;
+}
+
+.menuIconBar:nth-child(3) {
+  top: 23px;
+}
+
+.menuOpen .menuIconBar:nth-child(1) {
+  transform: rotate(45deg);
+  top: 15px;
+}
+
+.menuOpen .menuIconBar:nth-child(2) {
+  opacity: 0;
+}
+
+.menuOpen .menuIconBar:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 15px;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  max-width: 400px;
+  height: 100vh;
+  background-color: white;
+  z-index: 1000;
+  padding: 6rem 2rem 3rem;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+
+.menuOpen .mobileMenu {
+  transform: translateX(0);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.mobileNav {
+  margin-bottom: 3rem;
+}
+
+.mobileMenu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileMenuItem {
+  margin-bottom: 1.5rem;
+}
+
+.mobileMenuLink {
+  font-size: 1.4rem;
+  color: var(--color-dark);
+  display: block;
+  padding: 0.5rem 0;
+  position: relative;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  font-family: var(--font-cormorant);
+}
+
+.mobileMenuLink:hover {
+  color: var(--color-primary);
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.mobileMenuLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.mobileMenuLink:hover::after {
+  width: 50px;
+}
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.mobileActionsTitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-dark);
+  opacity: 0.5;
+  margin-bottom: 1rem;
+}
+
+.mobileActionButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.mobileContactInfo {
+  margin-top: 2rem;
+}
+
+.mobileContactItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+  opacity: 0.8;
+}
+
+.mobileContactIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menuOpen .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .menu, .actions {
+    display: none;
+  }
+  
+  .menuToggle {
+    display: block;
+  }
+  
+  .header {
+    padding: 1rem 0;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobileMenu {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .logo {
+    font-size: 1.6rem;
+  }
+}

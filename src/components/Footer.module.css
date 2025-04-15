@@ -1,0 +1,257 @@
+.footer {
+  background-color: var(--color-dark);
+  color: white;
+  padding: 6rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.patternOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.column {
+  opacity: 0.9;
+}
+
+.logoContainer {
+  margin-bottom: 2rem;
+}
+
+.logo {
+  font-family: var(--font-cormorant);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  color: white;
+  position: relative;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 30px;
+  height: 1px;
+  background-color: var(--color-gold);
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  max-width: 90%;
+}
+
+.title {
+  position: relative;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding-bottom: 0.75rem;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-gold);
+}
+
+.contactList {
+  list-style-type: none;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contactIcon {
+  width: 18px;
+  height: 18px;
+  margin-right: 1rem;
+  margin-top: 0.2rem;
+  color: var(--color-primary-light);
+}
+
+.socialList {
+  display: flex;
+  list-style-type: none;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.socialItem {
+  margin-right: 1rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.socialIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.linkList {
+  list-style-type: none;
+}
+
+.linkItem {
+  margin-bottom: 1rem;
+}
+
+.linkItem a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  padding: 0.2rem 0;
+}
+
+.linkItem a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-primary-light);
+  transition: width 0.3s ease;
+}
+
+.linkItem a:hover {
+  color: white;
+}
+
+.linkItem a:hover::after {
+  width: 100%;
+}
+
+.hoursList {
+  list-style-type: none;
+}
+
+.hoursItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hoursDay {
+  font-weight: 500;
+}
+
+.hoursTime {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  position: relative;
+  z-index: 1;
+}
+
+.bottomLinks {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.bottomLink {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease;
+}
+
+.bottomLink:hover {
+  color: var(--color-primary-light);
+}
+
+@media (max-width: 992px) {
+  .contentGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .column {
+    text-align: center;
+  }
+  
+  .title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .description {
+    max-width: 100%;
+  }
+  
+  .contactItem {
+    justify-content: center;
+  }
+  
+  .socialList {
+    justify-content: center;
+  }
+  
+  .hoursList {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .bottomLinks {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
